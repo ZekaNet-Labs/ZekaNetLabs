@@ -1,3 +1,0 @@
-cvzone
-Flask
-opencv-python
