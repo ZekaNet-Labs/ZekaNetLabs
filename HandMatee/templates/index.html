@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            perspective: 1000px;
+            height: 100vh;
+            background-color: #282c34; /* Arka plan rengi */
+            color: #61dafb; /* Metin rengi */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #start-button {
+            background-color: #61dafb; /* Buton rengi */
+            color: #282c34; /* Buton metin rengi */
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #start-button:hover {
+            background-color: #45aaf2; /* Butonun üzerine gelindiğinde rengi değiştir */
+        }
+
+        #video-container {
+            display: none; /* Sayfa ilk açıldığında gizli */
+            border: 10px solid #61dafb; /* Çerçeve rengi */
+            border-radius: 15px; /* Çerçeve kenar yuvarlaklığı */
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Gölgelendirme */
+            margin-top: 20px;
+            animation: fadeIn 2s; /* Animasyon: Yavaşça belirme */
+        }
+
+        #hand-video {
+            width: 600px;
+            height: 400px;
+            transition: transform 0.5s ease-in-out; /* Animasyon: Yumuşak geçişli büyükleşip küçülme */
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        #background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            transform-style: preserve-3d;
+            animation: rotateBackground 30s infinite linear;
+        }
+
+        .math-symbol {
+            position: absolute;
+            font-size: 3em;
+            opacity: 0.5;
+        }
+
+        .plus { top: 20%; left: 40%; }
+        .minus { top: 50%; left: 60%; }
+        .multiply { top: 70%; left: 20%; }
+        .half { top: 30%; left: 80%; }
+
+        @keyframes rotateBackground {
+            0% {
+                transform: rotateX(0) rotateY(0);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="background-container">
+        <div class="math-symbol plus">+</div>
+        <div class="math-symbol minus">-</div>
+        <div class="math-symbol multiply">x</div>
+        <div class="math-symbol half">½</div>
+    </div>
+
+    <h1>Hand Game</h1>
+    <button id="start-button" onclick="startGame()">Başla</button>
+    <div id="video-container">
+        <img id="hand-video" src="{{ url_for('video_feed') }}" alt="Hand Tracking Video" />
+    </div>
+    <h3 id="totals">{{totals}}</h3>
+
+    <script>
+        function startGame() {
+            alert("Oyun başlıyooor..."); // Add this line for testing
+            document.getElementById('start-button').style.display = 'none';
+            document.getElementById('video-container').style.display = 'block';
+        }
+    </script>
+    
+</body>
+</html>
