@@ -80,12 +80,12 @@ content4.addEventListener("mouseout", function () {
 
 content5.addEventListener("mouseover", function () {
 
-    span6.innerHTML = "Bu siteyi yapan kişiyimdir (bence en iyisi benim)"
+    span6.innerHTML = "Çok iyi nerdeyse çoğu sosyal medya tasarımlarımızı yaptı"
 
 })
 content5.addEventListener("mouseout", function () {
 
-    span6.innerHTML = "Webci"
+    span6.innerHTML = "Tasarımcı"
 
 })
 
